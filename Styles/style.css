@@ -21,7 +21,8 @@ body {
 .custom_grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 20px;
+    row-gap: 20px;
 }
 
 @media (max-width: 900px) {
@@ -141,10 +142,6 @@ body {
 .btn:hover {
     background-color: rgb(131, 167, 233);
     transition: all 0.2s ease-out;
-}
-
-.btn .details {
-    background-color: rgb(147, 166, 201);
 }
 
 .navbar {

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Strona główna</title>
-    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="Styles/style.css" type="text/css">
+    <script src="Scripts/fetchProducts.js" defer></script>
 </head>
 <body>
     <div class="page-container">
@@ -19,54 +20,7 @@
             </div>
         </nav>
         <div class="card_container">
-            <div class="custom_grid">
-                <div class="card">
-                    <img src="img/Test_image.jpg" class="card__img" alt="Zdjęcie produktu"/>
-                    <h5 class="card_title">NAZWA PRODUKTU</h5>
-                    <div class="overlay">
-                        <div class="inner-card-controls">
-                            <button class="btn details">
-                                DETALE
-                            </button>
-                            <button class="btn">
-                                KUP
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="img/Test-Logo.png" class="card__img" alt="Zdjęcie produktu"/>
-                    <h5 class="card_title">NAZWA PRODUKTU</h5>
-                    <div class="overlay">
-                        <div class="inner-card-controls">
-                            <button class="btn">
-                                KUP
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="img/Test-Logo.png" class="card__img" alt="Zdjęcie produktu"/>
-                    <h5 class="card_title">NAZWA PRODUKTU</h5>
-                    <div class="overlay">
-                        <div class="inner-card-controls">
-                            <button class="btn">
-                                KUP
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="img/Test_image.jpg" class="card__img" alt="Zdjęcie produktu"/>
-                    <h5 class="card_title">NAZWA PRODUKTU</h5>
-                    <div class="overlay">
-                        <div class="inner-card-controls">
-                            <button class="btn">
-                                KUP
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="custom_grid" id="MAIN_GRID">
             </div>
         </div>
     </div>
