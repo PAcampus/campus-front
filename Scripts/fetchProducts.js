@@ -1,7 +1,6 @@
 const getProducts = () => {
     return new Promise( (resolve, reject) => {
-        fetch('http://localhost:8080/api/v1/product',{
-        })
+        fetch('http://localhost:8080/api/v1/product')
             .then( async response => {
                 const products = await response.json();
                 resolve(products);
@@ -21,13 +20,16 @@ const renderProducts = (products) => {
         products.forEach(product => {
             customGrid.innerHTML += `
             <div class="card" id="${product.id}">
-                    <img src="img/Test-logo.png" class="card__img" alt="Zdjęcie produktu"/>
-                    <h5 class="card_title">${product.name}</h5>
+                    <img src="../img/${product.image.path}" class="card__img" alt="Zdjęcie ${product.name}"/>
+                    <h4 class="card_title">${product.name}</h4>
                     <div class="overlay">
+                    <p class="card_description">${product.description}</p>
                         <div class="inner-card-controls">
+                            <a href="product.html?id=${product.id}" class="a__no_style">
                             <button class="btn details">
                                 DETALE
                             </button>
+                            </a>
                             <button class="btn">
                                 KUP
                             </button>
