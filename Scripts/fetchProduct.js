@@ -33,7 +33,7 @@ const setProductInfo = (product) => {
     title_element.innerText = product.name;
     image_element.src = `../img/${product.image.path}`;
     description_element.innerText = product.description;
-    price_element.innerText = product.price;
+    price_element.innerText = product.price + " zł";
     date_element.innerText = product.addedAt;
 }
 

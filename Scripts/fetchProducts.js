@@ -23,7 +23,7 @@ const renderProducts = (products) => {
                     <img src="../img/${product.image.path}" class="card__img" alt="Zdjęcie ${product.name}"/>
                     <h4 class="card_title">${product.name}</h4>
                     <div class="overlay">
-                    <p class="card_description">${product.description}</p>
+                        <p class="card_description">${product.description}</p>
                         <div class="inner-card-controls">
                             <a href="product.html?id=${product.id}" class="a__no_style">
                             <button class="btn details">

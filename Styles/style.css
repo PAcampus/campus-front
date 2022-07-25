@@ -103,7 +103,7 @@ body {
     row-gap: 20px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .custom_grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -144,7 +144,7 @@ body {
   
 @media (min-width: 1200px) {
     .card_container {
-        width: 1400px;
+        width: 1170px;
     }
 }
 
@@ -156,14 +156,13 @@ body {
     position: relative;
     border: 0;
     display: block;
-    object-fit:fill;
     font-weight: bold;
     border-radius: 4px;
     background-color: black;
+    justify-content: center;
 }
 
 .card__img {
-    height: 250px;
     width: 100%;
 }
 
@@ -199,20 +198,21 @@ body {
 .card_description {
     opacity: 0;
     cursor: default;
+    width: 90%;
+    height: 37.5%;
+    position: relative;
+    top: 30%;
+    margin-right: auto;
+    margin-left: auto;
+    color: #fff;
+    text-shadow: 1px 1px 3px black;
+    text-align: center;
+    overflow: hidden;
 }
 
 .card:hover .overlay .card_description {
     opacity: 1;
     transition: all 0.1s ease-in;
-    color: #fff;
-    text-shadow: 1px 1px 3px black;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
     z-index: 100;
 }
 
@@ -254,17 +254,33 @@ body {
 
 /* --------------------PRODUCT DETAILS--------------------*/
 .product-details {
-    min-width: 30%;
-    max-width: 40%;
+    max-width: 50%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    border: 1px black;
+    text-align: center;
+    gap: 5px;
 }
 
+@media (max-width: 1250px) {
+    .product-details {
+        flex-direction: column;
+    }
+}
+
+.product-details__img {
+    width: 100%;
+}
+
+.product-details__image {
+    flex:1;
+}
+
+.product-details__description {
+    flex:0.5;
+}
 
 .product-details__element_name {
     margin-top: 10px;
@@ -273,11 +289,26 @@ body {
 
 .product-details__element {
     margin-bottom: 10px;
-    text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.product-details__img {
-    width: 80%;
+.product-details__footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+    justify-content: center;
+}
+
+.product-details__footer_element {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+@media (max-width: 1250px) {
+    .product-details__footer {
+        flex-direction: column;
+        margin: 0;
+    }
 }
