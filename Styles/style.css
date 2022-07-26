@@ -79,7 +79,28 @@ body {
     transition: all 0.2s ease-out;
 }
 
-/* --------------------FOOTER--------------------*/
+/*---------------------MAIN PAGE--------------------*/
+
+.main-page__items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+@media (max-width: 1250px) {
+    .main-page__items {
+        flex-direction: column;
+    }
+}
+
+/*---------------------FOOTER--------------------*/
 .footer {
     flex-shrink: 0;
     width: 100%;
@@ -95,7 +116,7 @@ body {
     margin-top: 10px;
 }
 
-/* --------------------GRID--------------------*/
+/*---------------------GRID--------------------*/
 .custom_grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -119,7 +140,7 @@ body {
 .card_container {
     padding-right: 15px;
     padding-left: 15px;
-    padding-top: 30px;
+    padding-top: 40px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -260,7 +281,7 @@ body {
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    text-align: justify;
     gap: 5px;
 }
 
@@ -311,4 +332,60 @@ body {
         flex-direction: column;
         margin: 0;
     }
+}
+
+.form-wrapper {
+    width: 33.3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px 40px;
+    position: absolute;
+    left: 50%;
+    transform: translate( -50%);
+}
+
+.form-inputs {
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: left;
+    display:flex;
+    flex-direction:column;
+}
+
+.form-inputs__inline {
+    margin-bottom: 15px;
+    width: 100%;
+    text-align: left;
+    display:flex;
+    flex-direction:row;
+}
+
+.form-label {
+    font-size: 1em;
+    margin-bottom: 0.5em;
+    margin-right: 0.25em;
+    color: #222;
+}
+
+.form-input {
+    padding: 10px 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #cfcfcf;
+    margin-bottom: 0.5rem;
+}
+
+.form-input::placeholder {
+    font-size: 1.2em;
+    font-weight: lighter;
+    color: #999;
+}
+
+.form-footer {
+    display: flex;
+    flex-direction: column;
+    grid-area: 10px;
+    justify-content: center;
+    align-items: center;
 }

@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Katalog</title>
     <link rel="stylesheet" href="../Styles/style.css" type="text/css">
+    <title>Logowanie</title>
+    <script src="../Scripts/authenticator.js" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
-    <script src="../Scripts/fetchProducts.js" defer></script>
 </head>
 <body>
     <div class="page-container">
@@ -33,9 +33,29 @@
                     </a>
                 </div>
             </nav>
-            <div class="card_container">
-                <div class="custom_grid" id="MAIN_GRID">
-                </div>
+            <h1 class="heading">Logowanie</h1>
+            <hr class="breakline"/>
+            <div class="form-wrapper">
+                <form onsubmit="return performLogin()">
+                    <div class="form-inputs">
+                        <label for="usernameInput" class="form-label">Podaj email:</label>
+                        <input id="usernameInput" type="text" class="form-input" placeholder="Email">
+                    </div>
+                    <div class="form-inputs">
+                        <label for="passwordInput" class="form-label">Podaj hasło:</label>
+                        <input id="passwordInput" type="password" class="form-input" placeholder="Hasło">
+                    </div>
+                    <div class="form-footer">
+                        <input type="submit" value="Zaloguj się" class="btn">
+                        
+                            <p>Jeżeli nie masz konta, 
+                                <a href="register.html">
+                                    Zarejestruj się!
+                                </a>
+                            </p>
+                        
+                    </div>
+                </form>
             </div>
         </div>
         <footer class="footer">
@@ -44,6 +64,5 @@
             </p>
         </footer>
     </div>
-    
 </body>
 </html>
