@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Strona główna</title>
+    <script src="../Scripts/hideIfNotLoggedIn.js" defer></script>
+    <script src="../Scripts/authenticator.js"></script>
     <link rel="stylesheet" href="../Styles/style.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 </head>
@@ -18,27 +20,29 @@
                     <a href="products.html" class="a__no_style">
                         <li class="navbar__item">KATALOG</li>
                     </a>
-                    <a href="orders.html" class="a__no_style">
+                    <a href="orders.html" class="a__no_style enabled" id="orders">
                         <li class="navbar__item">ZAMÓWIENIA</li>
                     </a>
-                    <a href="cart.html" class="a__no_style">
+                    <a href="cart.html" class="a__no_style enabled">
                         <li class="navbar__item">
                             <span class="material-symbols-outlined">shopping_cart</span></i></li>
                     </a>
                 </ul>
                 <div class="navbar__user">
                     <a href="login.html" class="a__no_style">
-                        <p id="username">Zaloguj się!</p>
+                        <p id="user">Zaloguj się!</p>
                     </a>
+                    <button class="btn btn__red enabled" id="logout" onclick="logout()">Wyloguj</button>
                 </div>
             </nav>
             <div class="main-page__items">
-                <div>
-                    <img src="../img/Test-Logo.png" alt="" width="600px">
+                <img src="../img/main-page-img.png" alt="">
+                <div class="main-page-quote">
+                    <q >
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa cumque praesentium fugit nesciunt soluta quaerat perspiciatis deleniti totam! Neque dignissimos molestias provident necessitatibus laudantium, voluptate tempora rem ullam molestiae rerum.
+                    </q>
+                    <p> - Mariusz P. -</p>
                 </div>
-                <q>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa cumque praesentium fugit nesciunt soluta quaerat perspiciatis deleniti totam! Neque dignissimos molestias provident necessitatibus laudantium, voluptate tempora rem ullam molestiae rerum.
-                </q>
             </div>
         </div>
         <footer class="footer">

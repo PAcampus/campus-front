@@ -33,6 +33,34 @@ body {
     width: 33%;
 }
 
+.btn {
+    color:white;
+    background-color: rgb(68, 114, 202);
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 4px;
+    height: 30px;
+    border:none;
+    cursor: pointer;
+}
+  
+.btn:hover {
+    background-color: rgb(131, 167, 233);
+    transition: all 0.2s ease-out;
+}
+
+.btn__red {
+    background-color: rgb(216, 98, 98);
+}
+
+.btn__red:hover {
+    background-color: rgb(231, 146, 146);
+}
+
+.disabled {
+    display: none;
+}
+
 /* --------------------NAVBAR--------------------*/
 .navbar {
     background: rgb(68, 114, 202);
@@ -52,9 +80,13 @@ body {
 }
 
 .navbar__user {
+    display: flex;
+    flex-direction: row;
     justify-self: end;
     margin-right: 40px;
+    gap: 10px;
     cursor:default;
+    align-items: center;
 }
 
 .navbar__menu {
@@ -83,21 +115,25 @@ body {
 
 .main-page__items {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    max-width: 50%;
+    max-height: 50%;
     text-align: center;
+    margin: 0 auto;
+    margin-top: 100px;
 }
 
 @media (max-width: 1250px) {
     .main-page__items {
         flex-direction: column;
     }
+}
+
+.main-page-quote {
+    font-size: x-large;
+    padding: 20px 10px;
+    border: 1px solid rgb(143, 137, 137);
 }
 
 /*---------------------FOOTER--------------------*/
@@ -255,22 +291,6 @@ body {
     transition: all 0.1s ease-in;
     visibility: visible;
     position: absolute;
-}
-
-.btn {
-    color:white;
-    background-color: rgb(68, 114, 202);
-    text-align: center;
-    font-size: 1rem;
-    border-radius: 4px;
-    height: 30px;
-    border:none;
-    cursor: pointer;
-}
-  
-.btn:hover {
-    background-color: rgb(131, 167, 233);
-    transition: all 0.2s ease-out;
 }
 
 /* --------------------PRODUCT DETAILS--------------------*/

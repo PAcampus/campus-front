@@ -16,6 +16,7 @@ const login = async (email, password) => {
         const user_token = auth_data.userToken;
         sessionStorage.setItem('user_id', user_id);
         sessionStorage.setItem('user_token', user_token);
+        sessionStorage.setItem('user_email', email);
 
         return Promise.resolve();
 
@@ -49,10 +50,12 @@ const register = async (name, last_name, email, password, address, phoneNumber) 
 }
 
 const logout = () => {
-    if(isLoggedIn) {
+    if(isLoggedIn()) {
         document.querySelectorAll('#username').innerText = "Zaloguj się!";
         sessionStorage.removeItem('user_id');
         sessionStorage.removeItem('user_token');
+        sessionStorage.removeItem('user_email');
+        location.href="index.html";
     }
     else {
         alert('Musisz się najpierw zalogować!');
@@ -69,6 +72,7 @@ const performLogin = () => {
 
     login(email, password)
         .then( data => {
+            changeUserElement(email);
             location.href = 'index.html';
         } )
         .catch( err => {
@@ -87,10 +91,18 @@ const performRegister = () => {
 
     register(name, last_name, email, password, address, phoneNumber)
         .then( data => {
+            
             location.href = 'registerSuccess.html';
         } )
         .catch( err => {
             console.error(JSON.stringify(err));
         });
     return false;
+}
+
+const changeUserElement = (email) => {
+    const user_element = document.querySelectorAll('#user');
+    user_element.forEach( element => {
+        element.innerText = email;
+    });
 }

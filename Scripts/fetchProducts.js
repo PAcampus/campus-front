@@ -30,7 +30,7 @@ const renderProducts = (products) => {
                                 DETALE
                             </button>
                             </a>
-                            <button class="btn">
+                            <button class="btn enabled">
                                 KUP
                             </button>
                         </div>

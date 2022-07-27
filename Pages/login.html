@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../Styles/style.css" type="text/css">
     <title>Logowanie</title>
     <script src="../Scripts/authenticator.js" defer></script>
+    <script src="../Scripts/hideIfNotLoggedIn.js" defer></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 </head>
 <body>
@@ -19,18 +20,16 @@
                     <a href="products.html" class="a__no_style">
                         <li class="navbar__item">KATALOG</li>
                     </a>
-                    <a href="orders.html" class="a__no_style">
+                    <a href="orders.html" class="a__no_style enabled">
                         <li class="navbar__item">ZAMÓWIENIA</li>
                     </a>
-                    <a href="cart.html" class="a__no_style">
+                    <a href="cart.html" class="a__no_style enabled">
                         <li class="navbar__item">
                             <span class="material-symbols-outlined">shopping_cart</span></i></li>
                     </a>
                 </ul>
                 <div class="navbar__user">
-                    <a href="login.html" class="a__no_style">
-                        <p id="username">Zaloguj się!</p>
-                    </a>
+                    
                 </div>
             </nav>
             <h1 class="heading">Logowanie</h1>
@@ -65,4 +64,13 @@
         </footer>
     </div>
 </body>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings:
+      'FILL' 1,
+      'wght' 400,
+      'GRAD' 0,
+      'opsz' 48
+    }
+    </style>
 </html>
