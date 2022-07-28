@@ -8,7 +8,6 @@ const hideElements = () => {
 
 const showElements = () => {
     const elemnts_to_enabled = document.querySelectorAll('.disabled');
-    
     for (const element of elemnts_to_enabled) {
         element.classList.add('enabled');
         element.classList.remove('disabled');
@@ -29,10 +28,14 @@ const isLogged = () => {
     return sessionStorage.getItem('user_id') != null;
 }
 
-if(!isLogged()) {
-    hideElements();
+const performHideOrShow = () => {
+    if(!isLogged()) {
+        hideElements();
+    }
+    else {
+        setUserElement();
+        showElements();
+    }
 }
-else {
-    setUserElement();
-    showElements();
-}
+
+performHideOrShow();

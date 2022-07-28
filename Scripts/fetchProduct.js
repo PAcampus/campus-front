@@ -47,3 +47,13 @@ getProduct(product_id)
     .catch( error => {
         console.error(JSON.stringify(error))
     })
+
+let buyBtn = document.querySelector('#buyBtn');
+
+buyBtn.addEventListener('click', () => {
+    const name = document.querySelector('#title').textContent;
+    const price_element = document.querySelector('#price').textContent;
+    const price = parseFloat(price_element.slice(0, -3));
+    const id = parseInt(product_id);
+    buyItem(id, name, price);
+})

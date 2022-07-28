@@ -57,6 +57,14 @@ body {
     background-color: rgb(231, 146, 146);
 }
 
+.btn__details {
+    background-color: rgb(17, 63, 150);
+}
+
+.btn__details:hover {
+    background-color: rgb(26, 87, 202);
+}
+
 .disabled {
     display: none;
 }
@@ -133,7 +141,7 @@ body {
 .main-page-quote {
     font-size: x-large;
     padding: 20px 10px;
-    border: 1px solid rgb(143, 137, 137);
+    border: 1px solid rgb(187, 183, 183);
 }
 
 /*---------------------FOOTER--------------------*/
@@ -408,4 +416,60 @@ body {
     grid-area: 10px;
     justify-content: center;
     align-items: center;
+}
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 60%;
+    align-items: center;
+    margin: 0 auto;
+    row-gap: 10px;
+    padding-top: 10px;
+}
+
+.cart__product {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 50%;
+    margin-left: 10px;
+    border: 1px solid rgb(187, 183, 183);
+    border-radius: 6px;
+}
+
+.cart__product_text {
+    margin-left: 1%;
+}
+
+.cart__product_titles {
+    border: 0;
+    height: 20px;
+}
+
+.cart_btn {
+    height: 100%;
+    width: 30px;
+    right: 0;
+    background-color: rgb(247, 63, 63);
+    color: white;
+    font-weight: bold;
+    border: 0;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.cart_btn:hover {
+    background-color: rgb(230, 26, 26);
+}
+
+.cart_btn__invisible {
+    height: 100%;
+    width: 30px;
+    background: none;
+    border: none;
+    cursor: default;
 }

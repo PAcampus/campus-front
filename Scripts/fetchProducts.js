@@ -26,11 +26,11 @@ const renderProducts = (products) => {
                         <p class="card_description">${product.description}</p>
                         <div class="inner-card-controls">
                             <a href="product.html?id=${product.id}" class="a__no_style">
-                            <button class="btn details">
+                            <button class="btn btn__details">
                                 DETALE
                             </button>
                             </a>
-                            <button class="btn enabled">
+                            <button class="btn buyBtn enabled" id=${product.id}>
                                 KUP
                             </button>
                         </div>
@@ -46,8 +46,19 @@ const renderProducts = (products) => {
 
 getProducts()
     .then( products => {
-        console.log(JSON.stringify(products));
+        // console.log(JSON.stringify(products));
         renderProducts(products);
+        performHideOrShow();
+        const buyBtns = document.querySelectorAll('.buyBtn');
+        buyBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const id = parseInt(e.target.id);
+                console.log(id);
+                let product = Array.from(products).find(element => element.id === id);
+                console.log("PRODUKT", product);
+                buyItem(product.id, product.name, product.price);
+            })
+        })
     })
     .catch( error => {
         console.error(JSON.stringify(error))

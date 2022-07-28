@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Katalog</title>
-    <script src="../Scripts/cartProductsService.js" defer></script>
-    <script src="../Scripts/fetchProducts.js" defer></script>
+    <title>Pomyślne zamówienie</title>
     <script src="../Scripts/hideIfNotLoggedIn.js" defer></script>
-    <script src="../Scripts/authenticator.js" defer></script>
-
+    <script src="../Scripts/authenticator.js"></script>
     <link rel="stylesheet" href="../Styles/style.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 </head>
@@ -23,7 +20,7 @@
                     <a href="products.html" class="a__no_style">
                         <li class="navbar__item">KATALOG</li>
                     </a>
-                    <a href="orders.html" class="a__no_style enabled">
+                    <a href="orders.html" class="a__no_style enabled" id="orders">
                         <li class="navbar__item">ZAMÓWIENIA</li>
                     </a>
                     <a href="cart.html" class="a__no_style enabled">
@@ -38,10 +35,7 @@
                     <button class="btn btn__red enabled" id="logout" onclick="logout()">Wyloguj</button>
                 </div>
             </nav>
-            <div class="card_container">
-                <div class="custom_grid" id="MAIN_GRID">
-                </div>
-            </div>
+            <h1 class="heading">Zamówiono produkty!</h1>
         </div>
         <footer class="footer">
             <p class="footer_element">
@@ -49,6 +43,7 @@
             </p>
         </footer>
     </div>
+    
 </body>
 <style>
     .material-symbols-outlined {
