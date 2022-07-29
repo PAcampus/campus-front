@@ -56,7 +56,7 @@ getProducts()
                 console.log(id);
                 let product = Array.from(products).find(element => element.id === id);
                 console.log("PRODUKT", product);
-                buyItem(product.id, product.name, product.price);
+                buyItem(product.id, product.name, product.price, product.description, product.addedAt);
             })
         })
     })

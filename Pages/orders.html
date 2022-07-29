@@ -5,6 +5,7 @@
     <title>Zamówienia</title>
     <script src="../Scripts/hideIfNotLoggedIn.js" defer></script>
     <script src="../Scripts/authenticator.js" defer></script>
+    <script src="../Scripts/fetchOrders.js"></script>
     <link rel="stylesheet" href="../Styles/style.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,1,0" />
 </head>
@@ -35,6 +36,33 @@
                     <button class="btn btn__red enabled" id="logout" onclick="logout()">Wyloguj</button>
                 </div>
             </nav>
+            <h1 class="heading">Twoje zamówienia:</h1>
+            <div class="orders" id="orders">
+                <div class="order">
+                    <h3 class="orderproduct__header">Zamówienie z dnia: 00-00-0000</h3>
+                    <div class="orderproduct" id="">
+                        <img src="../img/Test-Logo.png" class="orderproduct__img">
+                        <p class="orderproduct__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, voluptatum praesentium rem reprehenderit esse modi vero minima autem expedita. Esse facilis, non ut sunt quasi minus expedita provident tenetur est!</p>
+                        <p class="orderproduct__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quaerat expedita numquam dolorum minus, et cumque quo, totam, quod soluta officia. Veritatis ullam quas pariatur harum quis enim ea nam?</p>
+                        <p class="orderproduct__text">00-00-0000</p>
+                    </div>    
+                    <div class="orderproduct" id="">
+                        <img src="../img/Test-Logo.png" class="orderproduct__img">
+                        <p class="orderproduct__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, voluptatum praesentium rem reprehenderit esse modi vero minima autem expedita. Esse facilis, non ut sunt quasi minus expedita provident tenetur est!</p>
+                        <p class="orderproduct__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quaerat expedita numquam dolorum minus, et cumque quo, totam, quod soluta officia. Veritatis ullam quas pariatur harum quis enim ea nam?</p>
+                        <p class="orderproduct__text">00-00-0000</p>
+                    </div>  
+                </div>
+                <div class="order">
+                    <h3 class="orderproduct__header">Zamówienie z dnia: 00-00-0000</h3>
+                    <div class="orderproduct" id="">
+                        <img src="../img/Test-Logo.png" class="orderproduct__img">
+                        <p class="orderproduct__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, voluptatum praesentium rem reprehenderit esse modi vero minima autem expedita. Esse facilis, non ut sunt quasi minus expedita provident tenetur est!</p>
+                        <p class="orderproduct__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quaerat expedita numquam dolorum minus, et cumque quo, totam, quod soluta officia. Veritatis ullam quas pariatur harum quis enim ea nam?</p>
+                        <p class="orderproduct__text">00-00-0000</p>
+                    </div>    
+                </div>
+            </div>
         </div>
         <footer class="footer">
             <p class="footer_element">

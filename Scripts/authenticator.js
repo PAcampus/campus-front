@@ -55,6 +55,7 @@ const logout = () => {
         sessionStorage.removeItem('user_id');
         sessionStorage.removeItem('user_token');
         sessionStorage.removeItem('user_email');
+        sessionStorage.removeItem('cartWithProducts');
         location.href="index.html";
     }
     else {

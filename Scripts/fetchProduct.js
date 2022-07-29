@@ -55,5 +55,7 @@ buyBtn.addEventListener('click', () => {
     const price_element = document.querySelector('#price').textContent;
     const price = parseFloat(price_element.slice(0, -3));
     const id = parseInt(product_id);
-    buyItem(id, name, price);
+    const description = document.querySelector('#description').textContent;
+    const addedAt = document.querySelector('#date').textContent;
+    buyItem(id, name, price, description, addedAt);
 })
