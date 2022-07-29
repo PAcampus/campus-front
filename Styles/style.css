@@ -479,7 +479,7 @@ body {
 .orders {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
+    row-gap: 20px;
     width: 70%;
     margin: 0 auto;
 }

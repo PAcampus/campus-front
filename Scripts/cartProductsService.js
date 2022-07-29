@@ -15,7 +15,7 @@ const renderCartWithProducts = () => {
     const cartWithProducts = JSON.parse(sessionStorage.getItem('cartWithProducts'));
     if (cartWithProducts) {
         const cart_element = document.querySelector('#cart')
-        cartWithProducts.cartProducts.forEach(product => {
+        cartWithProducts.orderProducts.forEach(product => {
             cart_element.innerHTML += `
                 <div class="cart__product">
                     <h5 class="cart__product_text">${product.name}</h5>
@@ -31,9 +31,10 @@ const renderCartWithProducts = () => {
     else {
         const temp = {
             cart: {
+                cartId: -1,
                 total: 0
             },
-            cartProducts: 
+            orderProducts: 
             []
         };
         sessionStorage.setItem('cartWithProducts', JSON.stringify(temp));
@@ -51,7 +52,7 @@ const calculateTotal = () => {
     let total = 0;
     
     if (cartWithProducts) {
-        cartWithProducts.cartProducts.forEach(product => {
+        cartWithProducts.orderProducts.forEach(product => {
             total += product.price * product.amount;
         });
     }
@@ -88,7 +89,13 @@ const addEventListeners = () => {
 
     const buyCartBtn = document.querySelector('#buyCart');
     buyCartBtn.addEventListener('click', () => {
-        buyCartWithProducts();
+        buyCartWithProducts()
+            .then(data => {
+                console.log(JSON.stringify(data));
+            })
+            .catch( error => {
+                console.error(JSON.stringify(error));
+            });
     });
 }
 
@@ -96,7 +103,7 @@ const deleteFunction = (id) => {
     const cartWithProducts = JSON.parse(sessionStorage.getItem('cartWithProducts'));
     if(cartWithProducts) {
         // console.log("BEFORE", cartWithProducts);
-        let productList = Array.from(cartWithProducts.cartProducts);
+        let productList = Array.from(cartWithProducts.orderProducts);
         const i = productList.findIndex(element => element.id === id);
         if( i > -1) {
             let temp = productList[i];
@@ -111,137 +118,20 @@ const deleteFunction = (id) => {
             }
         }
         // console.log("AFTER", cartWithProducts);
-        cartWithProducts.cartProducts = productList;
+        cartWithProducts.orderProducts = productList;
         sessionStorage.setItem('cartWithProducts', JSON.stringify(cartWithProducts));
     }
     clearCartElement();
     renderCartWithProducts();
 }
 
-const buyCartWithProducts = () => {
-    const cartWithProducts = JSON.parse(sessionStorage.getItem('cartWithProducts'));
-    if(cartWithProducts) {
-        createCart(cartWithProducts.cart)
-            .then(data => {
-                getCartId()
-                    .then(cartId => {
-                        createOrder(cartId)
-                            .then(_ => {
-                                getOrderId()
-                                .then(orderId => {
-                                    let orderProducts = unwrapProducts(Array.from(cartWithProducts.cartProducts), orderId);
-                                    createOrderProducts(orderProducts);
-                                }).catch( error => {
-                                    console.error(JSON.stringify(error));
-                                });
-                            }).catch( error => {
-                                console.error(JSON.stringify(error));
-                            });
-                    }).catch( error => {
-                        console.error(JSON.stringify(error));
-                    });
-            })
-            .catch( error => {
-                console.error(JSON.stringify(error));
-            })
-    }
-    console.log("Zamówienie");
-    sessionStorage.removeItem('cartWithProducts');
-    location.href = "cartBought.html";
-}
-
-const createOrder = async (cartId) => {
-    const userToken = sessionStorage.getItem('user_token');
-    const order = {
-        cartId: cartId,
-        createdAt: getCurrentDateAsString()
-    };
-    try {
-        const response = await fetch('http://localhost:8080/api/v1/order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': userToken               
-            },
-            body: JSON.stringify(order)
-        });
-        return Promise.resolve();
-    } catch (e) {
-        return Promise.reject(e);
-    }
-}
-
-const getCartId = async () => {
-    return new Promise( (resolve, reject) => {
-        fetch('http://localhost:8080/api/v1/cart/cartId')
-            .then( async response => {
-                const id = await response.json();
-                resolve(id);
-            })
-            .catch( error => {
-                console.debug('[debug] ERROR');
-                console.warn(JSON.stringify(error));
-                reject(error);
-            });
-    });
-}
-
-const getOrderId = async () => {
-    return new Promise( (resolve, reject) => {
-        fetch('http://localhost:8080/api/v1/order/orderId')
-            .then( async response => {
-                const orderId = await response.json();
-                resolve(orderId);
-            })
-            .catch( error => {
-                console.debug('[debug] ERROR');
-                console.warn(JSON.stringify(error));
-                reject(error);
-            });
-    });
-}
-
-const createCart = async (cart) => {
-    const userToken = sessionStorage.getItem('user_token');
-    try {
-        const response = await fetch('http://localhost:8080/api/v1/cart', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': userToken               
-            },
-            body: JSON.stringify(cart)
-        });
-        return Promise.resolve();
-    } catch (e) {
-        return Promise.reject(e);
-    }
-}
-
-const createOrderProducts = async (orderProducts) => {
-    try {
-        const response = await fetch('http://localhost:8080/api/v1/orderproduct/all', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(orderProducts)
-        });
-        return Promise.resolve();
-
-    } catch (e) {
-        return Promise.reject(e);
-    }
-}
-
 const buyItem = (id, name, price, description, addedAt ) => {
-    // console.log(id, name, price);
     let productToAdd = {id: id, name: name, price:price, description: description, addedAt: addedAt, amount: 1};
     if(sessionStorage.getItem('cartWithProducts')) {
         const cartWithProducts = JSON.parse(sessionStorage.getItem('cartWithProducts'));
         // console.log("BEFORE",cartWithProducts)
         if(cartWithProducts) {
-            let productList = Array.from(cartWithProducts.cartProducts);
+            let productList = Array.from(cartWithProducts.orderProducts);
             const i = productList.findIndex(element => element.id === id);
             if( i > -1) {
                 let temp = productList[i];
@@ -253,7 +143,7 @@ const buyItem = (id, name, price, description, addedAt ) => {
             else {
                 productList.push(productToAdd);
             }
-            cartWithProducts.cartProducts = productList;
+            cartWithProducts.orderProducts = productList;
         }
         // console.log("AFTER",cartWithProducts);
     sessionStorage.setItem('cartWithProducts', JSON.stringify(cartWithProducts));
@@ -261,9 +151,10 @@ const buyItem = (id, name, price, description, addedAt ) => {
     else{
         sessionStorage.setItem('cartWithProducts', JSON.stringify({
             cart: {
+                cartId: -1,
                 total: 0
             },
-            cartProducts: 
+            orderProducts: 
             [productToAdd]
         }));
     }
@@ -279,15 +170,54 @@ const getCurrentDateAsString = () => {
     return [year, month, day].join('-');
 }
 
-const unwrapProducts = (productList, orderId) => {
+const unwrapProducts = (productList) => {
     let outputList = [];
     let dateString = getCurrentDateAsString();
     productList.forEach(element => {
         for(let i=0; i < element.amount; i++) {
-            outputList.push({productId:element.id, orderId:orderId, createdAt:dateString});
+            outputList.push({productId:element.id, orderId:-1, createdAt:dateString});
         }
     });
-    return outputList;
+    return Array.from(outputList);
+}
+
+const buyCartWithProducts = async () => {
+    const cartWithProducts = JSON.parse(sessionStorage.getItem('cartWithProducts'));
+    let orderProducts =  unwrapProducts(Array.from(cartWithProducts.orderProducts));
+    
+    console.log("cartWithProducts z sesji",cartWithProducts);
+    let outputCartWithProducts = {
+        cart: {
+            cartId: -1,
+            total: cartWithProducts.cart.total
+        },
+        orderProducts: 
+            orderProducts
+    }
+    console.log("cartWithProducts",outputCartWithProducts);
+    try {
+        const response = await fetch('http://localhost:8080/api/v1/cartWithProducts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': userToken               
+                    },
+                    body: JSON.stringify(outputCartWithProducts)
+                    });
+        console.log('resolve');
+        return Promise.resolve();
+    } catch (e) {
+        console.log('reject');
+        return Promise.reject(e);
+    }
 }
 
 renderCartWithProducts();
+
+buyCartWithProducts()
+            .then(data => {
+                console.log('poszło', JSON.stringify(data));
+            })
+            .catch( error => {
+                console.error('nie poszło',JSON.stringify(error));
+            });
