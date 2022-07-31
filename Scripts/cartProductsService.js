@@ -91,10 +91,12 @@ const addEventListeners = () => {
     buyCartBtn.addEventListener('click', () => {
         buyCartWithProducts()
             .then(data => {
-                console.log(JSON.stringify(data));
+                console.log('poszło');
+                sessionStorage.removeItem('cartWithProducts');
+                location.href = 'cartBought.html';
             })
             .catch( error => {
-                console.error(JSON.stringify(error));
+                console.error('nie poszło',error);
             });
     });
 }
@@ -184,15 +186,15 @@ const unwrapProducts = (productList) => {
 const buyCartWithProducts = async () => {
     const cartWithProducts = JSON.parse(sessionStorage.getItem('cartWithProducts'));
     let orderProducts =  unwrapProducts(Array.from(cartWithProducts.orderProducts));
+    const userToken = sessionStorage.getItem('user_token');
     
     console.log("cartWithProducts z sesji",cartWithProducts);
     let outputCartWithProducts = {
         cart: {
             cartId: -1,
             total: cartWithProducts.cart.total
-        },
-        orderProducts: 
-            orderProducts
+            },
+        orderProducts: orderProducts
     }
     console.log("cartWithProducts",outputCartWithProducts);
     try {
@@ -204,20 +206,10 @@ const buyCartWithProducts = async () => {
                     },
                     body: JSON.stringify(outputCartWithProducts)
                     });
-        console.log('resolve');
         return Promise.resolve();
     } catch (e) {
-        console.log('reject');
         return Promise.reject(e);
     }
 }
 
 renderCartWithProducts();
-
-buyCartWithProducts()
-            .then(data => {
-                console.log('poszło', JSON.stringify(data));
-            })
-            .catch( error => {
-                console.error('nie poszło',JSON.stringify(error));
-            });
