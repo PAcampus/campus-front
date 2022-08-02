@@ -30,7 +30,7 @@ const getOrders = () => {
 }
 
 const renderOrders = (orderproductsMap,orders) => {
-    const orders_element = document.querySelector('#orders');
+    const orders_element = document.querySelector('.orders');
     if(orders_element) {
         orders.forEach(order => {
             orders_element.innerHTML += `
