@@ -46,11 +46,35 @@
                     <button class="cart_btn__invisible"></button>
                 </div>
             </div>
-            <div class="product-details__footer">
+            <div class="form-wrapper__no_position no_margin_bottom">
+                <h2 class="heading no_margin_bottom">Adres do zamówienia:</h2>
+                <div class="form-inputs__inline cart__keepAddress">
+                    <label for="keepAddress">Użyj adresu użytkownika</label>
+                    <input type="checkbox" name="keepAddress" id="keepAddress" onchange='handleCheckboxChange(this)'>
+                </div>
+            </div>
+            <div class="form-wrapper__no_position">
+                <form id="addressForm">
+                    <div class="form-inputs">
+                        <label for="streetInput" class="form-label">Ulica</label>
+                        <input id="streetInput" type="text" class="form-input" placeholder="np. Świętojańska 12A">
+                    </div>
+                    <div class="form-inputs">
+                        <label for="zipcodeInput">Kod pocztowy</label>
+                        <input id="zipcodeInput" type="text" class="form-input" placeholder="np. 15-082">
+                    </div>
+                    <div class="form-inputs">
+                        <label for="cityInput">Miasto</label>
+                        <input id="cityInput" type="text" class="form-input" placeholder="np. Białystok">
+                    </div>
+                </form>
+            </div>
+            <div class="cart__footer">
                 <h2>Do zapłaty: </h2>
                 <p id="total">kwota</p>
                 <button class="btn" id="buyCart">Zamawiam i płacę</button>
             </div>
+            
         </div>
         <footer class="footer">
             <p class="footer_element">

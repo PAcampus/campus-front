@@ -38,6 +38,7 @@ const renderCartWithProducts = () => {
             []
         };
         sessionStorage.setItem('cartWithProducts', JSON.stringify(temp));
+        sessionStorage.setItem('keepAddress', false);
     }
     addEventListeners();
 }
@@ -93,6 +94,7 @@ const addEventListeners = () => {
             .then(data => {
                 console.log('poszło');
                 sessionStorage.removeItem('cartWithProducts');
+                sessionStorage.removeItem('keepAddress');
                 location.href = 'cartBought.html';
             })
             .catch( error => {
@@ -183,18 +185,45 @@ const unwrapProducts = (productList) => {
     return Array.from(outputList);
 }
 
+function handleCheckboxChange(checkbox) {
+    if(checkbox.checked == true) {
+        var form = document.getElementById("addressForm");
+        var elements = form.elements;
+        for (var i = 0, len = elements.length; i < len; ++i) {
+            elements[i].disabled = true;
+        }
+        sessionStorage.setItem('keepAddress', true);
+    }
+    else {
+        var form = document.getElementById("addressForm");
+        var elements = form.elements;
+        for (var i = 0, len = elements.length; i < len; ++i) {
+            elements[i].disabled = false;
+        }
+        sessionStorage.setItem('keepAddress', false);
+   }
+}
+
 const buyCartWithProducts = async () => {
     const cartWithProducts = JSON.parse(sessionStorage.getItem('cartWithProducts'));
     let orderProducts =  unwrapProducts(Array.from(cartWithProducts.orderProducts));
     const userToken = sessionStorage.getItem('user_token');
-    
+    const keepAddress = sessionStorage.getItem('keepAddress');
+    let address = "";
+    if(keepAddress == 'false') {
+        const street = document.querySelector('#streetInput').value;
+        const zipcode = document.querySelector('#zipcodeInput').value;
+        const city = document.querySelector('#cityInput').value;
+        address = street + " " + zipcode + " " + city;
+    } 
     console.log("cartWithProducts z sesji",cartWithProducts);
     let outputCartWithProducts = {
         cart: {
             cartId: -1,
             total: cartWithProducts.cart.total
             },
-        orderProducts: orderProducts
+        orderProducts: orderProducts,
+        address: address
     }
     console.log("cartWithProducts",outputCartWithProducts);
     try {

@@ -29,8 +29,16 @@ body {
     text-align: center;
 }
 
+.no_margin_bottom {
+    margin-bottom: 0;
+}
+
 .breakline {
     width: 33%;
+}
+
+.grayed_out {
+    background-color: #999;
 }
 
 .btn {
@@ -69,6 +77,17 @@ body {
     display: none;
 }
 
+.search {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    width: 30%;
+    text-align: center;
+}
+
+.fa .fa-bars {
+    color: #fff;
+}
+
 /* --------------------NAVBAR--------------------*/
 .navbar {
     background: rgb(68, 114, 202);
@@ -86,6 +105,10 @@ body {
     margin-left: 50px;
     cursor:default;
 }
+/* 
+.navbar__icon {
+    display: none;
+} */
 
 .navbar__user {
     display: flex;
@@ -117,6 +140,11 @@ body {
     background-color: rgb(49, 99, 190);
     border-radius: 6px;
     transition: all 0.2s ease-out;
+}
+@media (max-width: 860px) {
+    .navbar {
+        
+    }
 }
 
 /*---------------------MAIN PAGE--------------------*/
@@ -184,7 +212,7 @@ body {
 .card_container {
     padding-right: 15px;
     padding-left: 15px;
-    padding-top: 40px;
+    padding-top: 20px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -362,6 +390,8 @@ body {
     }
 }
 
+/* --------------------FORM--------------------*/
+
 .form-wrapper {
     width: 33.3%;
     display: flex;
@@ -373,6 +403,14 @@ body {
     transform: translate( -50%);
 }
 
+.form-wrapper__no_position {
+    width: 33.3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5px auto;
+}
+
 .form-inputs {
     margin-bottom: 15px;
     width: 100%;
@@ -382,7 +420,7 @@ body {
 }
 
 .form-inputs__inline {
-    margin-bottom: 15px;
+    margin-top: 15px;
     width: 100%;
     text-align: left;
     display:flex;
@@ -417,6 +455,8 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+/* --------------------CART--------------------*/
 
 .cart {
     display: flex;
@@ -474,6 +514,20 @@ body {
     cursor: default;
 }
 
+.cart__footer {
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart__keepAddress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* --------------------ORDER--------------------*/
 
 .orders {
@@ -482,6 +536,12 @@ body {
     row-gap: 20px;
     width: 50%;
     margin: 0 auto;
+}
+
+@media (max-width: 1080px) {
+    .orders {
+      width: 95%;
+    }
 }
 
 .order {
