@@ -18,8 +18,12 @@ const setUserElement = () => {
     const user_email = sessionStorage.getItem('user_email');
     if(user_email) {
         const user_element = document.querySelector('#user');
+        const a_element = document.querySelector('#login');
         if(user_element) {
             user_element.innerText = user_email;
+        }
+        if(a_element) {
+            a_element.href = 'index.html';
         }
     }
 }
