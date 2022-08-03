@@ -153,7 +153,7 @@ body {
         background: rgb(68, 114, 202);
         margin: 0;
         padding: 0;
-        width: 50%;
+        width: 70%;
         gap: 0;
         height: fit-content;
         position: absolute;
@@ -528,7 +528,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    width: 50%;
+    width: 100%;
     margin-left: 10px;
     border: 1px solid rgb(187, 183, 183);
     border-radius: 6px;
