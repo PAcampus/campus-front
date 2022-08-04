@@ -214,9 +214,10 @@ const buyCartWithProducts = async () => {
         const street = document.querySelector('#streetInput').value;
         const zipcode = document.querySelector('#zipcodeInput').value;
         const city = document.querySelector('#cityInput').value;
+        if(street != "" && zipcode != "" && city != "")
         address = street + " " + zipcode + " " + city;
     } 
-    console.log("cartWithProducts z sesji",cartWithProducts);
+    // console.log("cartWithProducts z sesji",cartWithProducts);
     let outputCartWithProducts = {
         cart: {
             cartId: -1,

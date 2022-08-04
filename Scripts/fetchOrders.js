@@ -1,14 +1,3 @@
-let orders = [
-    {
-        orderId:1,
-        orderDate: "00-00-0000",
-        products:[
-            { id: 1, name: "name", description: "desc", createdAt:"00-00-0000", imagePath:"Test-Logo.png"}
-        ]
-    },
-
-]
-
 const getOrders = () => {
     const userToken = sessionStorage.getItem('user_token');
     return new Promise( (resolve, reject) => {
@@ -74,17 +63,19 @@ const addOrderProducts = (orderproductsMap, orderId, order_element) => {
 }
 
 const getOrderProductsMap = (orderproducts) => {
-    let orderproductsMap = new Map();
+    let tempMap = new Map();
         orderproducts.forEach(orderproduct => {
-           if(orderproductsMap.has(orderproduct.orderId)) {
-                let products = orderproductsMap.get(orderproduct.orderId);
-                orderproductsMap.set(orderproduct.orderId, [products,orderproduct.product])
+            // console.warn(orderproduct.product);
+           if(tempMap.has(orderproduct.orderId)) {
+                tempMap.get(orderproduct.orderId).push(orderproduct.product);
            }
            else {
-            orderproductsMap.set(orderproduct.orderId, orderproduct.product);
+            // console.log("NEW",orderproduct.orderId, orderproduct.product);
+            tempMap.set(orderproduct.orderId, [orderproduct.product]);
            }
         });
-    return orderproductsMap;
+    console.log(tempMap);
+    return tempMap;
 }
 
 const getUniqueOrders = (orders) => {
@@ -102,10 +93,12 @@ const getUniqueOrders = (orders) => {
 
 getOrders()
     .then( orderproducts => {
+        console.error('wszystkie',orderproducts);
+        let orderproductsMap = getOrderProductsMap(orderproducts);
         let ordersTemp = Array.from(orderproducts).map((element) => { return element.order; });
         const orders = getUniqueOrders(ordersTemp);
         // console.log('ORDERS',orders);
-        let orderproductsMap = getOrderProductsMap(orderproducts);
+        // console.log(orderproductsMap);
         renderOrders(orderproductsMap, orders);
         
     })
